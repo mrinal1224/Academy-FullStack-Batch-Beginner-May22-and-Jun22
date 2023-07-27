@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+
+
 function WatchList() {
   const [favourites, setFavourites] = useState([]);
   const [genres, setGenres] = useState([]);
