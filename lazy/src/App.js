@@ -3,6 +3,7 @@ import './App.css';
 import {useState , lazy , Suspense} from 'react'
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import Navbar from './components/Navbar';
+import CompA from './components/CompA';
 
 
 
@@ -34,8 +35,8 @@ function App() {
       {/* <h1>These are the Movies</h1>
       <button onClick={getMovies}>Show Movies</button>
       <p>{movies.length>0 ? JSON.stringify(movies) : ''}</p> */}
-   <Suspense fallback={<h2>Loading....</h2>}>
-      
+
+      {/* <Suspense fallback={<h2>Loading...</h2>}>
        <BrowserRouter>
 
         <Navbar/>
@@ -50,7 +51,12 @@ function App() {
      
        
        </BrowserRouter>
-       </Suspense>
+       </Suspense> */}
+
+       <CompA/>
+       <CompA dark />
+       <CompA yellow/>
+     
 
       
     </div>
