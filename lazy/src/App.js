@@ -4,6 +4,8 @@ import {useState , lazy , Suspense} from 'react'
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import Navbar from './components/Navbar';
 import CompA from './components/CompA';
+import Controlled from './components/Controlled';
+import Uncontrolled from './components/Uncontrolled';
 
 
 
@@ -53,9 +55,13 @@ function App() {
        </BrowserRouter>
        </Suspense> */}
 
-       <CompA/>
+       {/* <CompA/>
        <CompA dark />
-       <CompA yellow/>
+       <CompA yellow/> */}
+
+
+       <Controlled/>
+       <Uncontrolled/>
      
 
       

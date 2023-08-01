@@ -14,6 +14,8 @@ const styles = {
 }
 
 function HOC(WrappedComp) {
+
+    // args = [dark  ,yellow]
   return function (args){
     let temp ={}
 
