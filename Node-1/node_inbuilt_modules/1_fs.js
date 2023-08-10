@@ -88,6 +88,10 @@ console.log(destPath)
 
 
 fs.copyFileSync(srcFilePath , destPath)
+
+fs.unlinkSync(srcFilePath)
+
+
 console.log('File Copied')
 
 
