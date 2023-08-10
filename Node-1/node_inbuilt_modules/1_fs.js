@@ -1,6 +1,9 @@
 const fs = require('fs')
 
 
+const path = require('path')
+
+
 
 //1 . Read , Write , update and delete a file
 
@@ -32,10 +35,70 @@ const fs = require('fs')
 
 // unlickSync('filename')
 
-fs.unlinkSync('f4.txt')
+// fs.unlinkSync('f4.txt')
 
-console.log('file deleted')
+// console.log('file deleted')
 
 
 // Fs module with Directories
+
+
+// create and delete a directory (FOLDER)
+
+// fs.mkdirSync('myDirectory')
+
+// fs.mkdirSync('myDirectory2')
+
+// fs.mkdirSync('myDirectory3')
+
+// console.log('Directories Created')
+
+
+// fs.rmdirSync('myDirectory')
+
+// console.log('Directory Removed')
+
+
+// Check wheter a directory or a file exists or not
+
+// let doesExist = fs.existsSync('f6.txt')
+
+// console.log(doesExist)
+
+
+// Copying a file from one directory to another
+
+// srcFilePath
+// destinationDirectoryPath
+
+let srcFilePath = '/Users/admin/Desktop/Academy FullStack Batch Beginner May22 and Jun22/Node-1/node_inbuilt_modules/myDirectory2/NewFile.txt'
+
+let destDirectoryPath = '/Users/admin/Desktop/Academy FullStack Batch Beginner May22 and Jun22/Node-1/node_inbuilt_modules/myDirectory3'
+
+
+let toBeCopiedFileName = path.basename('/Users/admin/Desktop/Academy FullStack Batch Beginner May22 and Jun22/Node-1/node_inbuilt_modules/myDirectory2/NewFile.txt')
+
+
+
+console.log(toBeCopiedFileName)
+
+let destPath = path.join(destDirectoryPath ,toBeCopiedFileName )
+
+console.log(destPath)
+
+
+fs.copyFileSync(srcFilePath , destPath)
+console.log('File Copied')
+
+
+
+
+
+
+
+
+
+
+
+
 
