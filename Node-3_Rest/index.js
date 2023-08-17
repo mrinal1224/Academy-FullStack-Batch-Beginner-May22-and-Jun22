@@ -31,7 +31,7 @@ app.get('/products/:id' , (req , res)=>{
       res.status(201).json(req.body)
  })
 
- // put method
+ // put method ( update)
 
 
  app.put('/products/:id' , (req , res)=>{
@@ -43,6 +43,32 @@ app.get('/products/:id' , (req , res)=>{
 
      res.status(201).json()
 
+})
+
+app.patch('/products/:id' , (req , res)=>{
+    const id = Number(req.params.id)
+
+    const productIndex = products.findIndex(p => p.id===id)
+
+    const product = products[productIndex]
+
+    products.splice(productIndex , 1 , {...product , ...req.body})
+
+    res.status(201).json()
+
+})
+
+
+app.delete('/products/:id' , (req , res)=>{
+    const id = Number(req.params.id)
+
+    const productIndex = products.findIndex(p => p.id===id)
+
+    const product = products[productIndex]
+
+    products.splice(productIndex , 1)
+
+    res.status(201).json(product)
 })
 
 
