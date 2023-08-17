@@ -34,6 +34,20 @@ app.get('/products/:id' , (req , res)=>{
  // put method
 
 
+ app.put('/products/:id' , (req , res)=>{
+     const id = Number(req.params.id)
+
+     const productIndex = products.findIndex(p => p.id===id)
+
+     products.splice(productIndex , 1 , {...req.body , id:id})
+
+     res.status(201).json()
+
+})
+
+
+
+
 
 
 
