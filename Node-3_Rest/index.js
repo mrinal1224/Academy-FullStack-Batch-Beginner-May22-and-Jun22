@@ -6,9 +6,9 @@ const data = JSON.parse(fs.readFileSync('data.json' , "utf-8"))
 
 const products = data.products
 
-// app.use(express.json())
+ app.use(express.json())
 
-// Http methods
+// Http methods (read operation)
 
 app.get('/products' , (req , res)=>{
     res.send(products)
@@ -23,7 +23,16 @@ app.get('/products/:id' , (req , res)=>{
 })
 
 
-// Post method
+// Post method (Create)
+ app.post('/products' , (req , res)=>{
+      console.log(req.body)
+
+      products.push(req.body)
+      res.status(201).json(req.body)
+ })
+
+ // put method
+
 
 
 
