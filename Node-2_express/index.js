@@ -2,6 +2,7 @@ const express = require('express')
 
 const app = express()
 
+ // Custom Middlewares
 
 // I want to create a logger middleware here
 app.use((req , res , next)=>{
@@ -25,13 +26,26 @@ const auth = (req , res , next) =>{
     next()
 }
 
-app.use(auth)
+// app.use(auth) // app.use is a method which is used to invoke middlewares
 
+
+// Route Level Middlewares
+
+//They will only work on specific routes they will be assigned to
+
+
+// Built in Middlewares
+
+// 1. express.static
+
+app.use(express.static('public'))
 
 
 
 // endpoint
-app.get('/' , (req , res)=>{
+app.get('/users/:id' , auth  ,  (req , res)=>{
+
+    console.log(req.params)
     res.send({'type' : 'GET'})
 })
 
@@ -46,9 +60,9 @@ app.get('/' , (req , res)=>{
     res.send({'type' : 'PUT'})
  })
 
-//  app.delete('/' , (req , res)=>{
-//     res.send({'type' : 'DELETE'})
-//  })
+ app.delete('/' , (req , res)=>{
+    res.send({'type' : 'DELETE'})
+ })
 
 
 
