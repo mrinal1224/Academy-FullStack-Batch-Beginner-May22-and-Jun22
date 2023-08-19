@@ -24,29 +24,107 @@ mongoose.connect(DB , {
     isPublished : Boolean,
     rating : Number 
 })
-
-
 //Model
-
-
 const Course = mongoose.model('Course' , courseSchema)
 
 
+//Create a Document
 async function createCourse(){
     const course = new Course({
-        name : 'Java',
-        creator : 'Mark',
+        name : 'Python',
+        creator : 'Adam',
         isPublished : true,
-        rating : 4.1
-    
-    })
+        rating : 3})
     
     const courseCreated = await course.save()
     console.log(courseCreated)
 }
 
 
-createCourse()
+// createCourse()
+
+
+// Comparision Operators
+
+
+//gte
+//gt
+//lte
+//lt
+
+
+//in
+//not in
+
+
+async function getCourse(){
+//    const course = await Course.find({creator : 'Mark'}).select({rating:1})
+  const course = await Course.find({rating :{$lt : 4}})
+   console.log(course)
+}
+
+// getCourse()
+
+
+// Updating a Document
+
+async function updateCourse(id){
+    let course = await Course.findById(id)
+    
+    if(!course) return
+
+    course.name = 'Node.js'
+    course.creator = 'Mrinal'
+
+    const updatedCourse = await course.save()
+    console.log(updatedCourse)
+    
+
+    
+}
+
+
+//updateCourse('64e0f67d57ff1560a6f478ee')
+
+
+// Delete a Document
+
+
+async function deleteCourse(id){
+
+    let courseDeleted = await Course.findByIdAndDelete(id)
+
+    console.log(courseDeleted)
+}
+
+
+deleteCourse('64e0f67d57ff1560a6f478ee')
+
+
+
+
+
+
+
+// Nested Schema Example 
+
+// const NewUserSchema = mongoose.Schema({
+//     name:{type:String, required:true},
+//     password:{type:String, required:true},
+//     email:{type:String, required:true},
+//     friends: {type:Array, default: undefined},
+//     posts: [{
+//       head: { 
+//         type: String 
+//       },
+//       body: { 
+//         type: String 
+//       },
+//       image: { 
+//         type: String 
+//       }
+//     }]
+// })
 
 
 
