@@ -12,3 +12,11 @@ mongoose.connect(DB , {
  }).catch((err)=>{
     console.log(err)
  })
+
+
+
+ // Schema
+
+ 
+
+
