@@ -75,13 +75,13 @@
 
 // 5.
 
-let user = {
-    name: 'Stevee',
-    logMessage: function () { console.log(this.name); }
-}
+// let user = {
+//     name: 'Stevee',
+//     logMessage: function () { console.log(this.name); }
+// }
 
 
-setTimeout(() => { user.logMessage() }, 1000);
+// setTimeout(() => { user.logMessage() }, 1000);
 
 
 
@@ -92,32 +92,32 @@ setTimeout(() => { user.logMessage() }, 1000);
 //input - 
 // piping
 
-const val = { salary: 10000 };
-const getSalary = (person) => person.salary
-const addBonus = (netSalary) => netSalary + 1000; // 11000
-const deductTax = (grossSalary) => grossSalary - (grossSalary * .3); // 7700
+// const val = { salary: 10000 };
+// const getSalary = (person) => person.salary
+// const addBonus = (netSalary) => netSalary + 1000; // 11000
+// const deductTax = (grossSalary) => grossSalary - (grossSalary * .3); // 7700
 
 // create the pipe method which will execute all the functions 
 
 // rest operator
-const pipe = (...fns) => {
-    return (val) => {
-        fns.forEach((fn) => {
-            val = fn(val)
-        })
-        return val
-    }
+// const pipe = (...fns) => {
+//     return (val) => {
+//         fns.forEach((fn) => {
+//             val = fn(val)
+//         })
+//         return val
+//     }
 
-}
+// }
 
-const result = pipe(
-    getSalary,
-    addBonus,
-    deductTax,
+// const result = pipe(
+//     getSalary,
+//     addBonus,
+//     deductTax,
 
-)(val);
+// )(val);
 
-console.log(result);
+// console.log(result);
 
 
 // navi(flipkart) // 4YOE - SDE2
@@ -127,35 +127,104 @@ console.log(result);
 // output = 143545000
 
 
-function computeAmount() {
-    let temp = {
-        total: 0,
+// function computeAmount() {
+//     let temp = {
+//         total: 0,
 
-        lacs: function (val) {
-            this.total += val * Math.pow(10, 5)
-            return this
-        },
-        crore: function (val) {
-            this.total += val * Math.pow(10, 7)
-            return this
-        },
-        thousand: function (val) {
-            this.total += val * Math.pow(10, 3)
-            return this
-        },
+//         lacs: function (val) {
+//             this.total += val * Math.pow(10, 5)
+//             return this
+//         },
+//         crore: function (val) {
+//             this.total += val * Math.pow(10, 7)
+//             return this
+//         },
+//         thousand: function (val) {
+//             this.total += val * Math.pow(10, 3)
+//             return this
+//         },
 
-        value : function(){
-                return this.total
+//         value : function(){
+//                 return this.total
+//         }
+
+//     }
+
+//     return temp
+// }
+
+// const total = computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value();
+
+// console.log(total)
+
+
+// Razorpay , 5YOE (SDE2 , SDE3)
+
+// create this get method which will take an object and a key will be passed in form of a stirng
+
+
+
+
+
+
+function get(obj , path ){
+    path = path.replaceAll('[' , '.')
+    path = path.replaceAll(']' , '')
+
+    // .1.1
+
+    const keys = path.split('.').filter(Boolean)
+    //console.log(keys) // ['1' , '1']
+
+    let current = obj
+
+    for(let key of keys){
+        current = current[key]
+
+        if(current===undefined){
+            return undefined
         }
-
     }
 
-    return temp
+    return current
 }
 
-const total = computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value();
+console.log(get([{ developer: "Tom" } , [0, null] ] , "[1][1]"));
 
-console.log(total)
+
+console.log(get({ developer: "Software Engineer" }, "developer"));
+console.log(get({ developer: { firstName: "Tom", lastName: "Cruz" } }, "developer.lastName"));
+console.log(get([{ developer: "Tom" }, { count: [0, 1] }], "[1].count[0]"));
+console.log(get([{ developer: "Tom" }, [0, null]], "[1][3]"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Output:
+// 'Software Engineer'
+// 'Cruz'
+// '0'
+// null
+// undefined
+
+
+
+
 
 
 
