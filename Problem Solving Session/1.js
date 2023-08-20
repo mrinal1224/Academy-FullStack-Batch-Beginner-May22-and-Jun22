@@ -58,7 +58,7 @@
 
 
 //   4 . 
-  
+
 //   function makeUser() {
 //     return {
 //       name: "John",
@@ -75,13 +75,13 @@
 
 // 5.
 
-let user = {    
-               name: 'Stevee', 
-               logMessage : function() { console.log(this.name); } 
-            }
+let user = {
+    name: 'Stevee',
+    logMessage: function () { console.log(this.name); }
+}
 
 
-setTimeout(()=> {user.logMessage()}, 1000);
+setTimeout(() => { user.logMessage() }, 1000);
 
 
 
@@ -89,8 +89,8 @@ setTimeout(()=> {user.logMessage()}, 1000);
 
 // Problem Statement -- This Question was asked in AWS , 2YOE
 
- //input - 
- // piping
+//input - 
+// piping
 
 const val = { salary: 10000 };
 const getSalary = (person) => person.salary
@@ -100,24 +100,79 @@ const deductTax = (grossSalary) => grossSalary - (grossSalary * .3); // 7700
 // create the pipe method which will execute all the functions 
 
 // rest operator
-const pipe =(...fns)=>{
-  return(val)=>{
-    fns.forEach((fn)=>{
-        val = fn(val)
-    })
-    return val
-  }
+const pipe = (...fns) => {
+    return (val) => {
+        fns.forEach((fn) => {
+            val = fn(val)
+        })
+        return val
+    }
 
 }
 
 const result = pipe(
-  getSalary,
-  addBonus,
-  deductTax,
+    getSalary,
+    addBonus,
+    deductTax,
 
 )(val);
 
 console.log(result);
+
+
+// navi(flipkart) // 4YOE - SDE2
+
+
+
+// output = 143545000
+
+
+function computeAmount() {
+    let temp = {
+        total: 0,
+
+        lacs: function (val) {
+            this.total += val * Math.pow(10, 5)
+            return this
+        },
+        crore: function (val) {
+            this.total += val * Math.pow(10, 7)
+            return this
+        },
+        thousand: function (val) {
+            this.total += val * Math.pow(10, 3)
+            return this
+        },
+
+        value : function(){
+                return this.total
+        }
+
+    }
+
+    return temp
+}
+
+const total = computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value();
+
+console.log(total)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
