@@ -85,7 +85,44 @@ setTimeout(()=> {user.logMessage()}, 1000);
 
 
 
-// 6. 
+// 6.  // AWS , Navi , Razorpay
+
+// Problem Statement -- This Question was asked in AWS , 2YOE
+
+ //input - 
+ // piping
+
+const val = { salary: 10000 };
+const getSalary = (person) => person.salary
+const addBonus = (netSalary) => netSalary + 1000; // 11000
+const deductTax = (grossSalary) => grossSalary - (grossSalary * .3); // 7700
+
+// create the pipe method which will execute all the functions 
+
+// rest operator
+const pipe =(...fns)=>{
+  return(val)=>{
+    fns.forEach((fn)=>{
+        val = fn(val)
+    })
+    return val
+  }
+
+}
+
+const result = pipe(
+  getSalary,
+  addBonus,
+  deductTax,
+
+)(val);
+
+console.log(result);
+
+
+
+
+
 
 
 
